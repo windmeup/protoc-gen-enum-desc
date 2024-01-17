@@ -1,4 +1,4 @@
-module protoc-gen-enum-desc
+module github.com/windmeup/protoc-gen-enum-desc
 
 go 1.21
 
