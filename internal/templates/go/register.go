@@ -1,8 +1,8 @@
 package golang
 
 import (
-	pgs "github.com/lyft/protoc-gen-star/v2"
-	pgsgo "github.com/lyft/protoc-gen-star/v2/lang/go"
+	"github.com/lyft/protoc-gen-star/v2"
+	"github.com/lyft/protoc-gen-star/v2/lang/go"
 	"text/template"
 )
 

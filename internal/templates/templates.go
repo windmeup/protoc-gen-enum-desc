@@ -3,7 +3,7 @@ package templates
 import (
 	"github.com/lyft/protoc-gen-star/v2"
 	"github.com/lyft/protoc-gen-star/v2/lang/go"
-	golang "protoc-gen-enum-desc/internal/templates/go"
+	"github.com/windmeup/protoc-gen-enum-desc/internal/templates/go"
 	"text/template"
 )
 

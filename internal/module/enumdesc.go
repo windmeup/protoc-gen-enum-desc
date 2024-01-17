@@ -1,9 +1,9 @@
 package module
 
 import (
-	pgs "github.com/lyft/protoc-gen-star/v2"
-	pgsgo "github.com/lyft/protoc-gen-star/v2/lang/go"
-	"protoc-gen-enum-desc/internal/templates"
+	"github.com/lyft/protoc-gen-star/v2"
+	"github.com/lyft/protoc-gen-star/v2/lang/go"
+	"github.com/windmeup/protoc-gen-enum-desc/internal/templates"
 	"strings"
 )
 

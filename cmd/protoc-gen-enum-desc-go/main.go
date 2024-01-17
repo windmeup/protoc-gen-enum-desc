@@ -1,10 +1,10 @@
 package main
 
 import (
-	pgs "github.com/lyft/protoc-gen-star/v2"
-	pgsgo "github.com/lyft/protoc-gen-star/v2/lang/go"
+	"github.com/lyft/protoc-gen-star/v2"
+	"github.com/lyft/protoc-gen-star/v2/lang/go"
+	"github.com/windmeup/protoc-gen-enum-desc/internal/module"
 	"google.golang.org/protobuf/types/pluginpb"
-	"protoc-gen-enum-desc/internal/module"
 )
 
 func main() {
