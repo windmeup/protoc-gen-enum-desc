@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package windmeup.example.pged;
+
+import "windmeup/pged/enumdesc.proto";
+
+option go_package = "./example";
+
+enum Event {
+  EVENT_UNSPECIFIED = 0 [(windmeup.pged.description) = "unspecified"];
+  EVENT_START_SERVICE = 1 [(windmeup.pged.description) = "start service"];
+  EVENT_STOP_SERVICE = 2 [(windmeup.pged.description) = "stop service"];
+}
