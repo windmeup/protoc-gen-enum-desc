@@ -2,3 +2,5 @@
 // source: bar.proto
 
 package example
+
+import _ "google.golang.org/protobuf/reflect/protoreflect"

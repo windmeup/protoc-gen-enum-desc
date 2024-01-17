@@ -3,14 +3,34 @@
 
 package example
 
+import "google.golang.org/protobuf/reflect/protoreflect"
+
 var ServiceEvent_description = map[int32]string{
-	// TODO
+	0: "unspecified",
+	1: "service start",
+	2: "service stop",
+}
+
+func (x ServiceEvent) Description() string {
+	return ServiceEvent_description[int32(protoreflect.EnumNumber(x))]
 }
 
 var Client_ClientEvent_description = map[int32]string{
-	// TODO
+	0: "unspecified",
+	1: "client start",
+	2: "client stop",
+}
+
+func (x Client_ClientEvent) Description() string {
+	return Client_ClientEvent_description[int32(protoreflect.EnumNumber(x))]
 }
 
 var Client_Nest_ClientEvent_description = map[int32]string{
-	// TODO
+	0: "unspecified",
+	1: "nest client start",
+	2: "nest client stop",
+}
+
+func (x Client_Nest_ClientEvent) Description() string {
+	return Client_Nest_ClientEvent_description[int32(protoreflect.EnumNumber(x))]
 }

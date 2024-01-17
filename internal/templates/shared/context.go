@@ -17,7 +17,7 @@ func NewContext() *Context {
 }
 
 func (c *Context) AddEnum(e pgs.Enum) error {
-	var hasDesc bool
+	descriptions := make(map[int32]string)
 	for _, v := range e.Values() {
 		dp := new(string)
 		found, err := v.Extension(pged.E_Description, dp)
@@ -28,11 +28,10 @@ func (c *Context) AddEnum(e pgs.Enum) error {
 			continue
 		}
 		if desc := *dp; desc != "" {
-			hasDesc = true
-			break
+			descriptions[v.Value()] = desc
 		}
 	}
-	if !hasDesc {
+	if len(descriptions) == 0 {
 		return nil
 	}
 	id := e.FullyQualifiedName()
@@ -41,7 +40,8 @@ func (c *Context) AddEnum(e pgs.Enum) error {
 	}
 	id = strings.ReplaceAll(strings.TrimPrefix(id, "."), ".", "_")
 	c.enums[e] = &enum{
-		identifier: id,
+		identifier:   id,
+		descriptions: descriptions,
 	}
 	return nil
 }
@@ -51,4 +51,11 @@ func (c *Context) enumIdentifier(e pgs.Enum) string {
 		return e.identifier
 	}
 	return ""
+}
+
+func (c *Context) enumDescriptions(e pgs.Enum) map[int32]string {
+	if e, exists := c.enums[e]; exists {
+		return e.descriptions
+	}
+	return nil
 }

@@ -6,6 +6,8 @@ const fileTpl = `
 
 package {{ pkg . }}
 
+import "google.golang.org/protobuf/reflect/protoreflect"
+
 {{ range .AllEnums }}
 	{{ template "enum" . }}
 {{ end }}
