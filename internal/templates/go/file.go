@@ -6,5 +6,7 @@ const fileTpl = `
 
 package {{ pkg . }}
 
-// TODO
+{{ range .AllEnums }}
+	{{ template "enum" . }}
+{{ end }}
 `

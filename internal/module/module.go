@@ -1,9 +1,10 @@
 package module
 
 import (
-	"github.com/lyft/protoc-gen-star/v2"
-	"github.com/lyft/protoc-gen-star/v2/lang/go"
+	pgs "github.com/lyft/protoc-gen-star/v2"
+	pgsgo "github.com/lyft/protoc-gen-star/v2/lang/go"
 	"github.com/windmeup/protoc-gen-enum-desc/internal/templates"
+	"github.com/windmeup/protoc-gen-enum-desc/internal/templates/shared"
 	"strings"
 )
 
@@ -48,7 +49,9 @@ func (m *Module) Execute(targets map[string]pgs.File, _ map[string]pgs.Package) 
 	} else if langParam != "" {
 		m.Fail("unknown `lang` parameter")
 	}
-	tpls := templates.Templates(m.Parameters())[lang]
+	ctx, err := m.walk(targets)
+	m.Assert(err == nil, "failed to walk files: ", err)
+	tpls := templates.Templates(ctx, m.Parameters())[lang]
 	m.Assert(len(tpls) != 0, "could not find templates for `lang`: ", lang)
 	for _, f := range targets {
 		m.Push(f.Name().String())
@@ -63,4 +66,14 @@ func (m *Module) Execute(targets map[string]pgs.File, _ map[string]pgs.Package) 
 		m.Pop()
 	}
 	return m.Artifacts()
+}
+
+func (m *Module) walk(targets map[string]pgs.File) (*shared.Context, error) {
+	v := newVisitor(m.BuildContext)
+	for _, f := range targets {
+		if err := pgs.Walk(v, f); err != nil {
+			return nil, err
+		}
+	}
+	return v.ctx, nil
 }

@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package windmeup.pged;
+package pged;
 
 import "google/protobuf/descriptor.proto";
 
-option go_package = "github.com/windmeup/protoc-gen-enum-desc/proto";
+option go_package = "github.com/windmeup/protoc-gen-enum-desc/proto/pged";
 
 extend google.protobuf.EnumValueOptions {
   optional string description = 8858;

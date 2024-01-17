@@ -1,8 +1,8 @@
 package golang
 
 import (
-	"github.com/lyft/protoc-gen-star/v2"
-	"github.com/lyft/protoc-gen-star/v2/lang/go"
+	pgs "github.com/lyft/protoc-gen-star/v2"
+	pgsgo "github.com/lyft/protoc-gen-star/v2/lang/go"
 	"text/template"
 )
 
@@ -12,4 +12,5 @@ func Register(tpl *template.Template, params pgs.Parameters) {
 		"pkg": ctx.PackageName,
 	})
 	template.Must(tpl.Parse(fileTpl))
+	template.Must(tpl.New("enum").Parse(enumTpl))
 }
