@@ -3,4 +3,14 @@
 
 package example
 
-// TODO
+var ServiceEvent_description = map[int32]string{
+	// TODO
+}
+
+var Client_ClientEvent_description = map[int32]string{
+	// TODO
+}
+
+var Client_Nest_ClientEvent_description = map[int32]string{
+	// TODO
+}

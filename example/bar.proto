@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package pged.example;
+
+option go_package = "./example";
+
+message Command {
+  string command = 1;
+}

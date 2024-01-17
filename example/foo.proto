@@ -1,13 +1,32 @@
 syntax = "proto3";
 
-package windmeup.example.pged;
+package pged.example;
 
-import "windmeup/pged/enumdesc.proto";
+import "pged/enumdesc.proto";
 
 option go_package = "./example";
 
-enum Event {
-  EVENT_UNSPECIFIED = 0 [(windmeup.pged.description) = "unspecified"];
-  EVENT_START_SERVICE = 1 [(windmeup.pged.description) = "start service"];
-  EVENT_STOP_SERVICE = 2 [(windmeup.pged.description) = "stop service"];
+enum ServiceEvent {
+  SERVICE_EVENT_UNSPECIFIED = 0 [(pged.description) = "unspecified"];
+  SERVICE_EVENT_START = 1 [(pged.description) = "service start"];
+  SERVICE_EVENT_STOP = 2 [(pged.description) = "service stop"];
+}
+
+message Client {
+  enum ClientEvent {
+    CLIENT_EVENT_UNSPECIFIED = 0 [(pged.description) = "unspecified"];
+    CLIENT_EVENT_START = 1 [(pged.description) = "client start"];
+    CLIENT_EVENT_STOP = 2 [(pged.description) = "client stop"];
+  }
+  message Nest {
+    enum ClientEvent {
+      CLIENT_EVENT_UNSPECIFIED = 0 [(pged.description) = "unspecified"];
+      CLIENT_EVENT_START = 1 [(pged.description) = "nest client start"];
+      CLIENT_EVENT_STOP = 2 [(pged.description) = "nest client stop"];
+    }
+  }
+}
+
+message Service {
+  string name = 1;
 }
