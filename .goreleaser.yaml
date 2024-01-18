@@ -1,0 +1,29 @@
+env_files:
+  github_token: ./dev/tokens/github_token
+before:
+  hooks:
+    - go mod download
+builds:
+  - id: protoc-gen-enum-desc
+    main: ./cmd/protoc-gen-enum-desc/
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
+    env:
+      - CGO_ENABLED=0
+    binary: protoc-gen-enum-desc
+  - id: protoc-gen-enum-desc-go
+    main: ./cmd/protoc-gen-enum-desc-go/
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
+    env:
+      - CGO_ENABLED=0
+    binary: protoc-gen-enum-desc-go
+dist: ./dist/goreleaser/
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ .Version }}-next"
