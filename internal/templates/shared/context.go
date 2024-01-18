@@ -46,6 +46,17 @@ func (c *Context) AddEnum(e pgs.Enum) error {
 	return nil
 }
 
+func (c *Context) EmptyDescription(f pgs.File) bool {
+	for _, e := range f.Enums() {
+		if c.enums[e] != nil {
+			return false
+		}
+	}
+	return true
+}
+
+// methods for template:
+
 func (c *Context) enumIdentifier(e pgs.Enum) string {
 	if e, exists := c.enums[e]; exists {
 		return e.identifier

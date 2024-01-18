@@ -54,6 +54,9 @@ func (m *Module) Execute(targets map[string]pgs.File, _ map[string]pgs.Package) 
 	tpls := templates.Templates(ctx, m.Parameters())[lang]
 	m.Assert(len(tpls) != 0, "could not find templates for `lang`: ", lang)
 	for _, f := range targets {
+		if ctx.EmptyDescription(f) {
+			continue
+		}
 		m.Push(f.Name().String())
 		for _, tpl := range tpls {
 			out := templates.FilePathFor(tpl)(f, m.ctx, tpl)
