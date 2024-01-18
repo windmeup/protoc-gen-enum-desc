@@ -6,6 +6,10 @@ import "google/protobuf/descriptor.proto";
 
 option go_package = "github.com/windmeup/protoc-gen-enum-desc/proto/pged";
 
+extend google.protobuf.EnumOptions {
+  optional string default_description = 8858;
+}
+
 extend google.protobuf.EnumValueOptions {
   optional string description = 8858;
 }
