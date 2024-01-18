@@ -22,7 +22,7 @@ enum ClientEvent {
 }
 ```
 
-## Generate code file with protoc
+## Generate code with protoc
 
 ```shell
 protoc \
