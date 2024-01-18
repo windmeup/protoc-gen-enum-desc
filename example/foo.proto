@@ -14,15 +14,17 @@ enum ServiceEvent {
 
 message Client {
   enum ClientEvent {
-    CLIENT_EVENT_UNSPECIFIED = 0 [(pged.description) = "unspecified"];
+    option (pged.default_description) = "unknown client event";
+    CLIENT_EVENT_UNSPECIFIED = 0;
     CLIENT_EVENT_START = 1 [(pged.description) = "client start"];
-    CLIENT_EVENT_STOP = 2 [(pged.description) = "client stop"];
+    CLIENT_EVENT_STOP = 2;
   }
   message Nest {
     enum ClientEvent {
-      CLIENT_EVENT_UNSPECIFIED = 0 [(pged.description) = "unspecified"];
-      CLIENT_EVENT_START = 1 [(pged.description) = "nest client start"];
-      CLIENT_EVENT_STOP = 2 [(pged.description) = "nest client stop"];
+      option (pged.default_description) = "unknown nest client event";
+      CLIENT_EVENT_UNSPECIFIED = 0;
+      CLIENT_EVENT_START = 1;
+      CLIENT_EVENT_STOP = 2;
     }
   }
 }

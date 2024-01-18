@@ -7,3 +7,7 @@ option go_package = "./example";
 message Command {
   string command = 1;
 }
+
+enum NoDescription {
+  NO_DESCRIPTION_UNSPECIFIED = 0;
+}
